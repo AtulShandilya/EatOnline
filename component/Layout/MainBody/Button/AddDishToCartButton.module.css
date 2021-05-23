@@ -1,0 +1,55 @@
+.defaultButton{
+    height: 2rem;
+    width: 5rem;
+    background-color: #d09e64;
+    color: white;
+    text-align: center;
+    border-radius: 0.5rem;
+
+}
+
+.buttonContainer{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.outerButton{
+    height: 2rem;
+    width: 5rem;
+    background-color: #d09e64;
+    color: white;
+    text-align: center;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.smallButton{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    coor: black;
+    background-color: #d09e64;
+    border: brown;
+    /*background-color: transparent;*/
+}
+
+.smallButton:active{
+    background-color: #d09e64;
+    border: black;
+    /*background-color: transparent;*/
+}
+
+.foodCount{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 2px;
+    margin-left: 2px;
+    color: black
+}

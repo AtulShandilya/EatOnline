@@ -2,36 +2,36 @@ import React,{useState} from 'react'
 import {readUserInfo,writeUserInfo,readDishInfo,writeDishInfo,verifyUserLogin} from '../IO/FileAPI'
 const dotProp= require('dot-prop');
 
-const RestaurantContext = React.createContext(null);
-// const RestaurantContext = React.createContext({
-//     // Restaurant Menu
-//     dishList: {},
-//     onAddToMenu:()=>{},
-//     onDelFromMenu:()=>{},
-//     // Cart
-//     onAddToCart:()=>{},
-//     onDelFromCart:()=>{},
-//     //User
-//     userInfo:{
-//         isAdmin:false,
-//         isLoggedIn:false,
-//         loginToken:'',
-//         userName:"",
-//         password:'',
-//         Cart:{}
-//     },
-//     onLogout: ()=>{},
-//     onLogin:()=>{},
-//     onRegister:()=>{},
-//     onDelAccount:()=>{},
-//     control:{
-//         showAddItem:true,
-//         showCart:false,
-//         controlShowAddItem:()=>{},
-//         controlShowCart:()=>{}
-//     }
-//
-// })
+// const RestaurantContext = React.createContext(null);
+const RestaurantContext = React.createContext({
+    // Restaurant Menu
+    dishList: {},
+    onAddToMenu:()=>{},
+    onDelFromMenu:()=>{},
+    // Cart
+    onAddToCart:()=>{},
+    onDelFromCart:()=>{},
+    //User
+    userInfo:{
+        isAdmin:false,
+        isLoggedIn:false,
+        loginToken:'',
+        userName:"",
+        password:'',
+        Cart:{}
+    },
+    onLogout: ()=>{},
+    onLogin:()=>{},
+    onRegister:()=>{},
+    onDelAccount:()=>{},
+    control:{
+        showAddItem:true,
+        showCart:false,
+        controlShowAddItem:()=>{},
+        controlShowCart:()=>{}
+    }
+
+})
 
 
 
@@ -45,7 +45,7 @@ export const RestaurantContextProvider=(props)=>{
                                                         Cart:{}})
     const [dishList,setDishList]=useState({})
     const [firstFetch,setFirstFetch]=useState(0);
-    const [control,setControl]=useState({showAddItem:true, showCart:false})
+    const [control,setControl]=useState({showAddItem:false, showCart:false})
 
     //********************************************************************************//
     //************     User functions               **********************************//
@@ -69,70 +69,72 @@ export const RestaurantContextProvider=(props)=>{
         console.log("delete Account")
     }
     //********************************************************************************//
-    //************     Dish functions               **********************************//
+    //************     Dish Menu functions          **********************************//
     //********************************************************************************//
 
     // Read and update dishList
     if (firstFetch===0) {
         setFirstFetch(1);
         readDishInfo(setDishList)
-        console.log('read dish list')
+        // console.log('read dish list')
     }
     const onDelFromMenuHandler=(dishType,dishName)=>{
-        writeDishInfo('temp',dotProp.delete(dishList,dishType+'.'+dishName),setDishList)
+        let dishList1={...dishList};
+        writeDishInfo('temp',dotProp.delete(dishList1,dishType+'.'+dishName),setDishList)
     }
     const onAddToMenuHandler=(dishType,dishName,dishObj)=>{
-        writeDishInfo('temp',dotProp.set(dishList,dishType + '.' + dishName,dishObj),setDishList)
+        writeDishInfo('temp', {...dishList,[dishType]:{...dishList[dishType],[dishName]:dishObj}},setDishList)
     }
 
     //********************************************************************************//
     //************     Cart functions               **********************************//
     //********************************************************************************//
+    // Del from cart
     const onDelFromCartHandler=(dishName)=>{
+        let userInfo1={...userInfo};
         if(userInfo.Cart[dishName]==1){
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo.userName,dotProp.delete(userInfo,"Cart."+dishName),setUserInfo);
+                writeUserInfo(userInfo1.userName,dotProp.delete(userInfo1,"Cart."+dishName),setUserInfo);
             } else{
-                setUserInfo(dotProp.delete(userInfo,"Cart."+dishName))
+                dotProp.delete(userInfo1,"Cart."+[dishName])
+                console.log("del cart:",userInfo1)
+                setUserInfo(userInfo1)
             }
         } else {
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo.userName,dotProp.set(userInfo,"Cart."+dishName,userInfo.Cart[dishName]-1),setUserInfo);
+                writeUserInfo(userInfo1.userName,dotProp.set(userInfo1,"Cart."+dishName,userInfo1.Cart[dishName]-1),setUserInfo);
             } else{
-                setUserInfo(dotProp.delete(userInfo,"Cart."+dishName))
+                setUserInfo(dotProp.set(userInfo1,"Cart."+dishName,userInfo1.Cart[dishName]-1))
             }
         }
     }
-
+    // Add to cart
     const onAddToCartHandler=(dishName)=>{
-        if(userInfo.Cart[dishName]==0){
+        console.log("dishName:",dishName)
+        if(userInfo.Cart[dishName]==0||userInfo.Cart[dishName]==undefined){
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo.userName,dotProp.set(userInfo,"Cart."+dishName,1),setUserInfo);
+                writeUserInfo(userInfo.userName,{...userInfo,Cart:{...userInfo.Cart,[dishName]:1}},setUserInfo);
             } else{
-                setUserInfo(dotProp.delete(userInfo,"Cart."+dishName))
+                setUserInfo({...userInfo,Cart:{...userInfo.Cart,[dishName]:1}})
             }
         } else {
+            let addAgain=userInfo.Cart[dishName]+1;
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo.userName,dotProp.set(userInfo,"Cart."+dishName,userInfo.Cart[dishName]+1),setUserInfo);
+                writeUserInfo(userInfo.userName,{...userInfo,Cart:{...userInfo.Cart,[dishName]:addAgain}},setUserInfo);
             } else{
-                setUserInfo(dotProp.delete(userInfo,"Cart."+dishName))
+                console.log("add to cart again")
+                setUserInfo({...userInfo,Cart:{...userInfo.Cart,[dishName]:addAgain}})
             }
         }
     }
     //************************************************************************
     //            Control
     //************************************************************************
-    // const controlShowAddItemHandler=()=>{ console.log(dotProp.set(control,'control.showAddItem',!control.showAddItem))}
 
-    const controlShowAddItemHandler=()=>{ console.log('additem:',control.showAddItem)
-        // setControl({showAddItem:!control.showAddItem, showCart:false})
-            let control1={...control,showAddItem: !control.showAddItem};
-            setControl(control1);
-            console.log({...control1,showNewItem:true});
-    }
+    const controlShowAddItemHandler=()=>{setControl({...control,showAddItem: !control.showAddItem}); }
 
-        // setControl(dotProp.set(control,'showAddItem',control.showAddItem))}
-    const controlShowCartHandler=()=>{ setControl(dotProp.set(control,'control.showCart',!control.showCart))}
+    // setControl(dotProp.set(control,'showAddItem',control.showAddItem))}
+    const controlShowCartHandler=()=>{ setControl({...control,showCart:!control.showCart});}
 
 
     return (
@@ -149,8 +151,7 @@ export const RestaurantContextProvider=(props)=>{
             onDelAccount: onDelAccountHandler,
             control:control,
             controlShowAddItem:controlShowAddItemHandler,
-            controlShowCart:controlShowCartHandler,
-            tempTest:"Test Success"
+            controlShowCart:controlShowCartHandler
 
         }}>{props.children}</RestaurantContext.Provider>
     )

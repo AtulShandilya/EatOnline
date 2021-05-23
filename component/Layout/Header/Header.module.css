@@ -1,21 +1,151 @@
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 82%;
-    height: 3.5rem;
-    background-color: #8a2b06;
-    color: white;
-    display: flex;
+
+
+/************ TOP Header CSS ****************/
+
+.header-container {
+    /*position: fixed;*/
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: block;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 10%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    z-index: 10;
+
+    /*border: 4px solid brown;*/
+
+    /*background-image: url("../../../assets/image/Restautant2.jpg");*/
+    /*background-repeat: no-repeat; !* Do not repeat the image *!*/
+    /*background-size: cover;*/
+    /*background-position-y: -3rem;*/
 }
 
-.main-image {
+/*Inner Header CSS */
+.header--inner-top{
+    /*padding-top: 45px;*/
+    /*padding-bottom: 145px;*/
+    /*margin: 45px 20px 45px 20px;*/
+    display: flex;
+    flex-direction: row;
+    /*border: 4px solid blue;*/
+    background-color: rgb(31, 31, 31);
+    margin-top: -1rem;
+
+}
+@media screen and (max-width: 960px) {
+    .header--inner {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .header--inner {
+        padding-left: 44px;
+        padding-right: 44px;
+    }
+}
+
+/******* Inner header Element ******/
+
+.header--inner-element1{
+    width: 15%;
+    /*border: #4f005f 2px solid;*/
+    display: flex;
+    align-items: center;
+}
+
+.header--inner-element2{
+    width: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /*border: #4f005f 2px solid;*/
+}
+.header--inner-element2>p{
+    font-family: Oswald-regular;
+    font-effect: neon;
+    font-weight: Bold;
+    font-style: normal;
+    font-size: 38px;
+    letter-spacing: .00em;
+    line-height: .9em;
+    /*text-transform: uppercase;*/
+    color: #dfe7e6;
+}
+
+.header--inner-element2>nav{
+    font-family: Dosis-regular;
+    margin-top: -1rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: .02em;
+    line-height: 2.2em;
+    text-transform: none;
+    color: rgba(82,82,82,.6);
+}
+
+
+.header--inner-element3{
+    width: 25%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /*border: #4f005f 2px solid;*/
+}
+
+.header--inner-element3>img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+
+
+
+
+
+
+.header-right-container {
+    position: relative;
+    width: auto;
+    height: inherit;
+    background-color: #8a2b06;
+    /*color: white;*/
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+
+    /*border: 2px solid #ff0000;*/
+}
+
+.header-right-container-element {
+    width: 2rem;
+    height: 2rem;
+    background-color: #8a2b06;
+    margin-right: 2rem;
+    /*color: white;*/
+    display: inline-block;
+    /*border-radius: 1rem;*/
+    /*border: 2px solid white;*/
+
+}
+
+
+.header-element-img{
     width: 100%;
+    height: 100%;
+    display: block;
+    /*margin: -2rem;*/
+    /*border: 2px solid red;*/
+    border-radius: 2rem;
+    /*border: 2px solid orange;*/
+
+}
+
+/*Main Image*/
+.main-image {
+    width: 101%;
     height: 15rem;
     z-index: 0;
     overflow: hidden;
@@ -25,14 +155,7 @@
     width: 110%;
     height: 100%;
     object-fit: cover;
-    transform: rotateZ(-3deg) translateY(1rem) translateX(-1rem);
+    /*transform: rotateZ(-3deg) translateY(1rem) translateX(-1rem);*/
 }
 
 
-.header-img{
-    width: 2rem;
-    height: 2rem;
-    /*margin: -2rem;*/
-    /*border: 2px solid red;*/
-    border-radius: 0.5rem;
-}

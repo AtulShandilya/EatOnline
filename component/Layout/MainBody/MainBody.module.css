@@ -1,0 +1,30 @@
+
+/* Add new Menu*/
+.add-menu-container{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    /*border: 4px solid black;*/
+}
+
+.mainbody-header-container{
+    border: red 1px solid;
+    min-height: 15rem;
+    background-image: url("../../../assets/image/Restaurant1.jpg");
+    background-position-Y: -10rem;
+}
+
+.menuDishType{
+    width: 70%;
+    font-family: Oswald-regular;
+    font-size: 1.5rem;
+    background-image: linear-gradient(to right,lightgray,white);
+    color: #666666;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    padding-left: 1rem;
+    border-radius: 10px;
+}

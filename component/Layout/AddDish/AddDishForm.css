@@ -7,12 +7,21 @@
     text-align: left;
     /*border: 1px solid #2857a4;*/
 }
+.new-dish__title__dishType{
+    width: 20%;
+    /*border: 1px solid red;*/
+}
+.new-dish__title__dishDescription{
+    width: 40%;
+    margin-left: 2rem;
+    /*border: 1px solid red;*/
+}
 .new-dish__title{
     width: 40%;
     /*border: 1px solid red;*/
 }
 .new-dish__other{
-    margin-left: 5%;
+    /*margin-left: 1%;*/
     width: 22%;
     /*border: 1px solid yellow;*/
 }
@@ -35,6 +44,13 @@
 .ne_Title{
     width: 90%;
     max-width: 90%;
+}
+.ne_Title__Description{
+    width: 90%;
+    max-width: 90%;
+    height: 60px;
+    padding: 12px 20px;
+    /*margin-left: 2rem;*/
 }
 
 .ne_Other{
