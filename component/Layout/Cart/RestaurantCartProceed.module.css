@@ -1,0 +1,41 @@
+.CartProceed{
+    margin-top: 4px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    border-top: 2px solid #bebcbc;
+}
+
+.CartTotalAmountText{
+    font-family: "Apple Braille";
+    font-weight: bold;
+    width: 25%;
+    text-align: right;
+    padding: 2px;
+    margin-bottom: 4px;
+    margin-right: 2px;
+    margin-left: 1rem;
+    color: #666666;
+}
+
+.CartTotalAmount{
+    font-family: "Apple Braille";
+    font-weight: bold;
+    width: 25%;
+    text-align: left;
+    padding: 2px;
+    margin-bottom: 4px;
+    color: #30353e;
+}
+
+.CartProceedButton{
+    width: 11%;
+    text-align: right;
+    padding-right: 5px;
+    border-radius: 8px;
+    background-color: #4f92ac;
+    margin-bottom: 4px;
+    margin-left: 8rem;
+}

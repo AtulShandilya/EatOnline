@@ -6,19 +6,19 @@ const AddDishToCartButton=(props)=>{
     const ctx=useContext(RestaurantContext);
     // Function definition for add and delete to Cart
     const addToCart=()=>{
-        ctx.onAddToCart(props.dishName.toString())
+        ctx.onAddToCart(props.dishName,props.price)
     }
     const delFromCart=()=>{
-        ctx.onDelFromCart(props.dishName.toString())
+        ctx.onDelFromCart(props.dishName)
     }
 
     let TempButton=undefined;
-    if(ctx.userInfo.Cart[props.dishName]==undefined){
+    if(ctx.userInfo.Cart[props.dishName]== undefined){
         TempButton=<button onClick={addToCart} className={classes.defaultButton}>Add</button>
     }else{
         TempButton=<div className={classes.outerButton}>
             <button onClick={delFromCart} className={classes.smallButton}>-</button>
-            <div className={classes.foodCount}>{ctx.userInfo.Cart[props.dishName]}</div>
+            <div className={classes.foodCount}>{ctx.userInfo.Cart[props.dishName]["qty"]}</div>
             <button onClick={addToCart} className={classes.smallButton}>+</button>
         </div>
     }

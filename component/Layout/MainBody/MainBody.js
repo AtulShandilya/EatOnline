@@ -4,6 +4,7 @@ import BodyHeader from "./BodyHeader/BodyHeader";
 import AddDish from "../AddDish/AddDish";
 import classes from "./MainBody.module.css"
 import MainBodyMenuDetails from "./DishDetails/MainBodyMenuDetails"
+import RestaurantCart from "../Cart/RestaurantCart";
 const MainBody=(props)=>{
     const ctx=useContext(RestaurantContext);
     console.log("new:",ctx);
@@ -14,10 +15,12 @@ const MainBody=(props)=>{
                 <BodyHeader/>
 
                 {console.log('hdr:',ctx.control.showAddItem) }
-
-                <div className={classes["add-menu-container"]}>
-                    { ctx.control.showAddItem?<AddDish/>:<div/>}
-                </div>
+                {ctx.control.showAddItem || ctx.control.showCart?
+                    <div className={classes["add-menu-container"]}>
+                        { ctx.control.showAddItem?<AddDish/>:<div/>}
+                        { ctx.control.showCart?<RestaurantCart/>:<div/>}
+                    </div> : <div/>
+                }
             </div>
             <div className={classes["mainbody-menu-container"]}>
                 {

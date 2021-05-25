@@ -92,33 +92,36 @@ export const RestaurantContextProvider=(props)=>{
     // Del from cart
     const onDelFromCartHandler=(dishName)=>{
         let userInfo1={...userInfo};
-        if(userInfo.Cart[dishName]==1){
+        if(userInfo.Cart[dishName]["qty"]==1){
+            delete userInfo1.Cart[dishName];
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo1.userName,dotProp.delete(userInfo1,"Cart."+dishName),setUserInfo);
+                writeUserInfo(userInfo1.userName,userInfo1,setUserInfo);
             } else{
-                dotProp.delete(userInfo1,"Cart."+[dishName])
-                console.log("del cart:",userInfo1)
+                console.log("del cart:",userInfo1.Cart)
                 setUserInfo(userInfo1)
             }
         } else {
+            // const=
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo1.userName,dotProp.set(userInfo1,"Cart."+dishName,userInfo1.Cart[dishName]-1),setUserInfo);
+                writeUserInfo(userInfo1.userName,{...userInfo1,Cart:{...userInfo1.Cart,dishName:[dishName]["qry"]+=1}},setUserInfo);
             } else{
-                setUserInfo(dotProp.set(userInfo1,"Cart."+dishName,userInfo1.Cart[dishName]-1))
+                // setUserInfo({...userInfo1,Cart:{...userInfo1.Cart,dishName:{...userInfo1.Cart[dishName],"qty":userInfo1.Cart[dishName]["qty"]-=1}}})
+                setUserInfo(dotProp.set(userInfo1,"Cart."+dishName+".qty",userInfo1.Cart[dishName]["qty"]-1))
             }
         }
     }
     // Add to cart
-    const onAddToCartHandler=(dishName)=>{
+    const onAddToCartHandler=(dishName,price)=>{
         console.log("dishName:",dishName)
         if(userInfo.Cart[dishName]==0||userInfo.Cart[dishName]==undefined){
             if (userInfo.isLoggedIn){
-                writeUserInfo(userInfo.userName,{...userInfo,Cart:{...userInfo.Cart,[dishName]:1}},setUserInfo);
+                writeUserInfo(userInfo.userName,{...userInfo,Cart:{...userInfo.Cart,[dishName]:{"qty":1,"price":price}}},setUserInfo);
             } else{
-                setUserInfo({...userInfo,Cart:{...userInfo.Cart,[dishName]:1}})
+                setUserInfo({...userInfo,Cart:{...userInfo.Cart,[dishName]:{"qty":1,"price":price}}})
             }
         } else {
-            let addAgain=userInfo.Cart[dishName]+1;
+            const qty=userInfo.Cart[dishName]["qty"]+1;
+            let addAgain={"qty":qty,"price":qty*price}
             if (userInfo.isLoggedIn){
                 writeUserInfo(userInfo.userName,{...userInfo,Cart:{...userInfo.Cart,[dishName]:addAgain}},setUserInfo);
             } else{
@@ -131,10 +134,10 @@ export const RestaurantContextProvider=(props)=>{
     //            Control
     //************************************************************************
 
-    const controlShowAddItemHandler=()=>{setControl({...control,showAddItem: !control.showAddItem}); }
+    const controlShowAddItemHandler=()=>{setControl({...control,showAddItem: !control.showAddItem,showCart:false});}
 
     // setControl(dotProp.set(control,'showAddItem',control.showAddItem))}
-    const controlShowCartHandler=()=>{ setControl({...control,showCart:!control.showCart});}
+    const controlShowCartHandler=()=>{ setControl({...control,showCart:!control.showCart,showAddItem:false});}
 
 
     return (

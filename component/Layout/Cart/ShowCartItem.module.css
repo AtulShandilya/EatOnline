@@ -1,0 +1,27 @@
+.showCartItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 60%;
+    height: 2rem;
+    min-height: 2rem;
+    color: #7c7b7b;
+    /*border: #8a2b06 2px solid;*/
+}
+
+.showCartItem__pic{
+    width: 20%;
+    height: 90%;
+    display: block;
+    /*background-color: #666666;*/
+}
+
+.showCartItem__name{
+    width: 50%;
+    height: 90%;
+}
+
+.showCartItem__price{
+    width: 30%;
+    height: 90%;
+}

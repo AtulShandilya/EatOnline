@@ -30,7 +30,7 @@ const Header=(props)=>{
                         <nav>OUR-ROOTS  OUR-BRANCHES    CONTACT   FOLLOW</nav>
                     </div>
                     <div className={classes["header--inner-element3"]}>
-                            <img src={Object.keys(ctx.userInfo.Cart).length===0?CartImg:CartImgFull} />
+                            <img  onClick={ctx.controlShowCart} src={Object.keys(ctx.userInfo.Cart).length===0?CartImg:CartImgFull} />
                             {/*<img className={classes['header-element-img'] } src={(ctx.userInfo.Cart)?empryCart:nonEmptyCart}/>*/}
                     </div>
                 </div>

@@ -23,7 +23,7 @@ const MainBodyMenuDetails=(props)=>{
                     </div>
             </div>
             <div>
-                <AddDishToCartButton dishName={props.DishName}/>
+                <AddDishToCartButton dishName={props.DishName} price={ctx.dishList[props.DishType][props.DishName]["price"]}/>
             </div>
 
         </div>
