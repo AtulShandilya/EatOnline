@@ -5,20 +5,21 @@ import AddDish from "../AddDish/AddDish";
 import classes from "./MainBody.module.css"
 import MainBodyMenuDetails from "./DishDetails/MainBodyMenuDetails"
 import RestaurantCart from "../Cart/RestaurantCart";
+import RestaurantLogin from "../../Login/Login/RestaurantLogin";
 const MainBody=(props)=>{
     const ctx=useContext(RestaurantContext);
-    console.log("new:",ctx);
-    console.log("UserCart",ctx.userInfo.Cart);
+    // console.log("new:",ctx);
+    // console.log("UserCart",ctx.userInfo.Cart);
     return (
         <React.Fragment>
-            <div className={classes["mainbody-header-container"]}>
+            <div  className={classes["mainbody-header-container"]}>
                 <BodyHeader/>
 
-                {console.log('hdr:',ctx.control.showAddItem) }
-                {ctx.control.showAddItem || ctx.control.showCart?
+                {ctx.control.showAddItem || ctx.control.showCart || ctx.control.showLogin ?
                     <div className={classes["add-menu-container"]}>
-                        { ctx.control.showAddItem?<AddDish/>:<div/>}
-                        { ctx.control.showCart?<RestaurantCart/>:<div/>}
+                        { ctx.control.showAddItem?<AddDish/>:""}
+                        { ctx.control.showCart?<RestaurantCart/>:""}
+                        {ctx.control.showLogin?<RestaurantLogin/>:""}
                     </div> : <div/>
                 }
             </div>

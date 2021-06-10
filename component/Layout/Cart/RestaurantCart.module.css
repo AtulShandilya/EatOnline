@@ -1,16 +1,20 @@
 .CartContainer{
+    position: relative;
     width: 70%;
     min-width: 150px;
     min-height: 260px;
     height: auto;
     Display: flex;
     flex-direction: column;
-    background-color: #d9ddd9;
+    /*background-color: #d9ddd9;*/
+    background-image: url("../../../assets/image/dark-cement.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 1rem;
-    /*border: 2px solid white;*/
+    border: 2px solid white;
     overflow: auto;
     justify-content: space-between;
-
+    z-index: 99;
 }
 
 .CartDetails{
@@ -21,7 +25,7 @@
 }
 
 .noItemInCart{
-    color: #666666;
+    color: #b1b1b1;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -33,21 +37,46 @@
 .cartHeader{
     display: flex;
     flex-direction: row;
+    color: #949393;
     /*margin-left: 6rem;*/
-    background-color: #528c8c;
+    /*background-color: #528c8c;*/
     border-bottom: 2px solid grey;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    font-size: 1.2rem;
+    /*border: #2857a4 2px solid;*/
 }
 
+.dummy{
+    width: 20%;
+    /*border: #282c34 2px solid;*/
+}
 .cartItems{
-    width: 38%;
+    width: 40%;
     font-weight: bold;
-    margin-left: 5.7rem;
+    /*margin-left: 5.7rem;*/
+    /*border: #282c34 2px solid;*/
 }
 .qty{
-    width: 23%;
+    width: 20%;
     font-weight: bold;
+    /*border: #282c34 2px solid;*/
 }
 .price{
     width: 20%;
     font-weight: bold;
+    /*border: #282c34 2px solid;*/
+}
+
+
+/*  Close button*/
+.closeButton{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: block;
+    top: 3px;
+    right: 3px;
+    z-index: 99;
 }

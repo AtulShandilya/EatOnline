@@ -1,0 +1,28 @@
+.aboutRestaurant{
+    color: #667a80;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.aboutRestaurant>h1{
+    font-family: AppleMyungjo;
+}
+.aboutRestaurant>h2{
+    color: #667a80;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+}
+
+.aboutRestaurant__desc{
+    display: block;
+    width: 60%;
+    text-align: center;
+    color: #667a80;
+    /*border: 2px solid red;*/
+}
+.aboutRestaurant__desc>p{
+    font-family: AppleMyungjo;
+}

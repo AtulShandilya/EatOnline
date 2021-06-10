@@ -1,4 +1,5 @@
-.new-dish{
+.newLogin{
+    position: relative;
     padding: 1rem;
     background-color: #18120f;
     /*opacity: 0.5;*/
@@ -9,14 +10,27 @@
     font-size: 1rem;
     margin: 1rem;
     align-items: center;
-
+    /*border: 2px red solid;*/
 }
 
-.dish-note{
-    color: #2857a4;
+.User__LoginHeader{
+    color: #3aafc4;
     font-size: 1.5rem;
     font-family: "Apple Braille";
     text-align: center;
     font-weight: bold;
     margin-bottom: 1rem;
+    display: block;
+    /*border: 2px red solid;*/
+}
+
+
+.closeButton{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: block;
+    top: -6px;
+    right: -4px;
+
 }

@@ -1,10 +1,12 @@
 import classes from './Footer.module.css'
+import ContactsRestaurant from './ContactsRestaurant'
+import FollowRestaurant from './FollowRestaurant'
 const Footer=()=>{
 
     return(
         <div className={classes.footer}>
-            <ContactsRestautant/>
-            <FollowRestaurant></FollowRestaurant>
+            <ContactsRestaurant/>
+            {/*<FollowRestaurant></FollowRestaurant>*/}
         </div>
     )
 }

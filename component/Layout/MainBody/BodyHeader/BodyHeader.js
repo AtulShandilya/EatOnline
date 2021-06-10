@@ -4,7 +4,7 @@ import classes from './BodyHeader.module.css'
 const BodyHeader=(props)=>{
     const ctx=useContext(RestaurantContext);
     return (
-        <div className={classes['dish-type-container']}>
+        <div onClick={ctx.controlHideAll} className={classes['dish-type-container']}>
             {
                 Object.keys(ctx.dishList).map(dType=>
                     <div className={classes['dish-type']}>{dType}</div>

@@ -1,25 +1,37 @@
 .dishTopContainer{
     width: 90%;
     height: 7rem;
-    min-width: 22rem;
+    min-width: 50rem;
+    max-width: 60rem;
     background-color: #f8f6f6;
     border-radius: 0.2rem;
     display: flex;
     padding: 4px;
     margin-left: 2rem;
     margin-top: 0.5rem;
+    position: relative;
+    z-index: 3;
 }
 
 .dishImage{
     /*border: #8a2b06 solid 2px;*/
-    width: 30%;
+    width: 25%;
     min-width: 10rem;
     display: block;
     height: inherit;
     border-radius: 0.2rem;
-    background-image: url("../../../../assets/image/capuchino.jpeg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    /*background-image: url("../../../../assets/image/capuchino.jpeg");*/
+
+    /*background-size: 100% 100%;*/
+    /*background-repeat: no-repeat;*/
+}
+
+.dishImage>img{
+    width: 100%;
+    min-width: 10rem;
+    display: block;
+    height: inherit;
+    border-radius: 0.2rem;
 }
 
 /* Dish Details*/
@@ -62,4 +74,15 @@
 .dish-nonVeg-ind{
     width: 1%;
     background-color: darkred;
+}
+
+/*  Close button*/
+.closeButton{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: block;
+    top: 3px;
+    right: 3px;
+    z-index: 99;
 }

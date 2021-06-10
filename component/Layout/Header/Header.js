@@ -3,9 +3,10 @@ import classes from './Header.module.css'
 import MenuImg from '../../../assets/icon/menu_black_24dp.svg'
 import CartImgFull from '../../../assets/icon/shopping-bag_full.svg'
 import CartImg from '../../../assets/icon/shopping-bag_empty.svg'
+import Account from '../../Login/Account/Account'
 import headerImg from '../../../assets/icon/header.png'
 import userImg from '../../../assets/icon/user-img.png'
-import empryCart from '../../../assets/icon/emptyCart.png'
+import emptyCart from '../../../assets/icon/emptyCart.png'
 import nonEmptyCart from '../../../assets/icon/nonEmptyCart.png'
 import RestaurantContext from '../../../Context/DishContext.js'
 import Card from '../../UI/Card/Card'
@@ -20,12 +21,14 @@ const Header=(props)=>{
                 <div className={[classes["header--inner-top"],classes["header--inner" ]].join(' ')}>
                     <div className={classes["header--inner-element1"]}>
                         <div >
-                            <button onClick={ctx.controlShowAddItem} >
+                            <button onClick={ctx.controlShowAccount} >
                                 <img src={MenuImg}/>
                             </button>
                         </div>
+                        {ctx.control.showAccount?<Account />:""}
                     </div>
-                    <div className={classes["header--inner-element2"]}>
+
+                    <div onClick={ctx.controlHideAll} className={classes["header--inner-element2"]}>
                         <p>JazzRestaurant.</p>
                         <nav>OUR-ROOTS  OUR-BRANCHES    CONTACT   FOLLOW</nav>
                     </div>
